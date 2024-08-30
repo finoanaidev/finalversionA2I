@@ -1,0 +1,16 @@
+.calendly-button {
+    position: relative;
+  }
+  
+  .calendly-button .MuiFab-root {
+    position: fixed;
+    bottom: 200px;
+    right: 20px;
+    background-color: #00a2ff; /* Couleur de fond du bouton */
+    color: white; /* Couleur du texte */
+  }
+  
+  .calendly-button .MuiFab-root:hover {
+    background-color: #007bb2; /* Couleur de fond du bouton au survol */
+  }
+  

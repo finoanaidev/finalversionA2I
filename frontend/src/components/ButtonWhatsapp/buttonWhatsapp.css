@@ -1,0 +1,15 @@
+.whatsapp-button {
+    position: relative;
+  }
+  
+  .whatsapp-button .MuiFab-root {
+    position: fixed;
+    bottom: 120px;
+    right: 20px;
+    background-color: #25d366; /* Couleur verte */
+  }
+  
+  .whatsapp-button .MuiFab-root:hover {
+    background-color: #25d366; /* Gardez la même couleur au survol */
+  }
+  

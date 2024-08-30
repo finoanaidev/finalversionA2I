@@ -1,0 +1,7 @@
+.custom-card {
+    border: 1px solid #f3dfa3; /* Bordure jaune */
+  }
+  .custom-button {
+    width: 100%; /* Pour que le bouton occupe toute la largeur du conteneur parent */
+  }
+  

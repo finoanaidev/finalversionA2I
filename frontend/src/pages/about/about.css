@@ -1,0 +1,121 @@
+/* Styles de base */
+
+.about-container {
+    width: 100%;
+    min-height: 100vh; /* Changed from height to min-height to ensure full-screen height */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f5f5f5;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .about-title {
+    margin-bottom: 20px; /* Space between the title and the about section */
+  }
+  
+  .about-title h1 {
+    font-size: 36px; /* Adjust the font size as needed */
+    color: #faee46; /* Title color */
+  }
+  
+  .about {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-width: 1200px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  .about-left {
+    flex: 1;
+  }
+  
+  .about-right {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .about-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .about-right h1 {
+    font-size: 24px;
+    color: #5159A7;
+    margin-bottom: 20px;
+  }
+  
+  .about-right p {
+    font-size: 18px;
+    color: #4a4a4a;
+    margin-bottom: 20px;
+  }
+  
+  .about-right ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+  }
+  
+  .about-right li {
+    font-size: 16px;
+    color: #4a4a4a;
+    margin-bottom: 10px;
+    padding-left: 30px; /* Ajout de padding pour aligner le texte */
+    position: relative; /* Ajout pour positionner le pseudo-élément */
+  }
+  
+  .about-right li::before {
+    content: ""; /* Nécessaire pour créer un pseudo-élément */
+    position: absolute;
+    left: 0; /* Ajusté pour aligner avec le début du texte */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px; /* Taille du point */
+    height: 10px; /* Taille du point */
+    background-color: #f4c64a; /* Couleur du point */
+    border-radius: 50%; /* Rend le point rond */
+  }
+  
+  .about-right button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #5159A7;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .about-right button:hover {
+    background-color: #4a4a4a;
+  }
+  .presentation{
+    color: #fa9d46;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .about {
+        flex-direction: column;
+    }
+  
+    .about-left, .about-right {
+        width: 100%;
+    }
+  
+    .about-right {
+        padding: 20px;
+    }
+  }
+  

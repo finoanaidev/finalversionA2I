@@ -1,0 +1,29 @@
+.custom-navbar {
+  background-color: #f2f3b7; /* Définir la couleur de fond souhaitée */
+  padding: 20px;
+}
+
+.custom-navbar .navbar-nav {
+  margin-left: auto; /* Pousser les liens vers la droite */
+}
+
+.custom-navbar .navbar-nav > .nav-item {
+  margin-right: 20px; /* Ajouter un espacement entre les liens */
+}
+
+.custom-navbar {
+  padding-left: 20px; /* Ajouter un espacement à gauche */
+}
+
+.logo-container {
+  margin-right: 20px; /* Espacement à droite du logo */
+  padding: 0 25px;
+}
+
+.mr-auto {
+  padding-right: 25px;
+}
+
+.logout {
+  padding-right: 25px;
+}

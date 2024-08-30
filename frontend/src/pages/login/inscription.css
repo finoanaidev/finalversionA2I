@@ -1,0 +1,83 @@
+/* inscription.css */
+
+.inscription {
+  max-width: 400px; /* Largeur maximale du conteneur */
+  margin: auto; /* Centrer horizontalement */
+  padding: 20px; /* Espacement intérieur */
+  background: #fff; /* Couleur de fond blanche */
+  border-radius: 10px; /* Bords arrondis */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
+  margin-top: 100px; /* Augmentez la marge supérieure pour déplacer vers le bas */
+}
+
+.logo {
+  width: 100px; /* Largeur de l'image */
+  height: 100px; /* Hauteur de l'image */
+  border-radius: 50%; /* Image ronde */
+  margin: 0 auto 20px; /* Centrer horizontalement et espacement en bas */
+  display: block; /* Affichage en bloc */
+}
+
+h2 {
+  margin-bottom: 20px; /* Espacement en bas */
+  text-align: center; /* Centrer le texte */
+}
+
+form {
+  display: flex;
+  flex-direction: column; /* Organiser les éléments en colonne */
+}
+
+label {
+  margin-bottom: 5px; /* Espacement en bas */
+  text-align: left; /* Aligner le texte à gauche */
+}
+
+input {
+  margin-bottom: 10px; /* Espacement en bas */
+  padding: 10px; /* Espacement intérieur */
+  width: 100%; /* Largeur totale */
+  box-sizing: border-box; /* Inclure le padding et les bordures dans la largeur */
+  border: 1px solid #ccc; /* Bordure grise */
+  border-radius: 5px; /* Bords arrondis */
+}
+
+button {
+  padding: 10px 20px; /* Espacement intérieur */
+  background-color: #007bff; /* Couleur de fond bleue */
+  color: white; /* Couleur du texte blanche */
+  border: none; /* Pas de bordure */
+  border-radius: 5px; /* Bords arrondis */
+  cursor: pointer; /* Curseur de pointeur */
+  width: 100%; /* Largeur totale */
+}
+
+button:hover {
+  background-color: #0056b3; /* Couleur de fond bleue foncée au survol */
+}
+
+.error-message {
+  color: red; /* Couleur du texte rouge */
+  margin-bottom: 10px; /* Espacement en bas */
+  text-align: center; /* Centrer le texte */
+}
+
+.success-message {
+  color: green; /* Couleur du texte verte */
+  margin-bottom: 10px; /* Espacement en bas */
+  text-align: center; /* Centrer le texte */
+}
+
+.password {
+  position: relative;
+  width: 100%;
+}
+
+.password-toggle-icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #333;
+}

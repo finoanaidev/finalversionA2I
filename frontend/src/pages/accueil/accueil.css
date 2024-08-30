@@ -1,0 +1,156 @@
+/* Styles de base */
+
+.acc{
+  background-size: 100%;
+  background-position-y: 20%;
+  width: 100%;
+  height: 60vh;
+}
+
+.acc h1 {
+  text-align: center;
+  font-size: 70px;
+  padding: 30px;
+  text-decoration: solid;
+  color: #FAEE46;
+}
+
+.acc h1 {
+  background: linear-gradient(to right, #FAEE46 52%, #9758A3 48%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: colorChange 6s linear infinite;
+}
+
+.acc p {
+  font-size: 30px;
+  margin-top: -40px;
+  text-align: center;
+  color: white;
+}
+
+.search-acc {
+  width: 70%;
+  margin-left: 22%;
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.search-bar {
+  width: 60%;
+  margin-left: 20%; 
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  flex: 1;
+}
+
+.search-button {
+  padding: 8px 16px;
+  margin-left: 10px;
+  margin-right: 20%;
+  border: none;
+  border-radius: 4px;
+  background-color: #007BFF;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.search-button:hover {
+  background-color: #0056b3;
+}
+
+.acc-desc{  
+  width: 40%;  
+  margin-left: 30%;
+}
+
+.acc-desc p{  
+  margin-top: 10px;
+  font-size: 20px;
+  color: white;
+  text-align: center;
+}
+
+.acc-desc strong{
+  color: #FAEE46;
+}
+
+/* Ajout des arrière-plans pour chaque plateforme */
+
+/* Bureau */
+@media only screen and (min-width: 1025px) {
+  .acc {
+    background-image: url(/src/assets/images/accueil.jpg);
+  }
+}
+
+/* Tablette */
+@media only screen and (max-width: 1024px) {
+  .acc {
+    background-image: url(/src/assets/images/accueil2.jpg);
+  }
+}
+
+/* Téléphone */
+@media only screen and (max-width: 767px) {
+  .acc {
+    background-image: url(/src/assets/images/accueil3.jpg);
+  }
+}
+
+/* Styles additionnels pour les autres éléments */
+.ca {
+  margin-top: 70px;
+  display: flex;
+}
+
+.cag {
+  width: 40%;
+  height: 40px;
+  margin-left: 5%;
+  border-left:4px solid #ffffff;
+  border-right:4px solid #ffffff;
+  border-radius: 10px;
+}
+
+.cad{
+  width: 40%;
+  height: 40px;
+  margin-left: 10%;
+  border-left:4px solid #ffffff;
+  border-right:4px solid #ffffff;
+  border-radius: 10px;
+}
+
+.ca p{
+  margin-top: 0px;
+  font-size: 30px;
+  color: #FAEE46;
+  text-decoration: solid;
+}
+
+.ca button{
+    margin-top: -5px;
+    width: 50%;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #9758A3;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; 
+    margin-left: 25%;
+}
+
+.ca button:hover {
+  background-color: #0056b3;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}

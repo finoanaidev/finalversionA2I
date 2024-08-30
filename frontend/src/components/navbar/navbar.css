@@ -1,0 +1,135 @@
+/* navbar.css */
+.bg-custom-purple-dark {
+    background-color: #fff9a3b3 !important;
+}
+
+.text-custom-yellow {
+    color: #FAEE46 !important;
+}
+
+.font-weight-bold {
+    font-weight: bold !important;
+}
+
+.btn-custom-blue {
+    background-color: #007bff !important;
+    color: #ffffff !important;
+    font-weight: bold !important;
+    padding: 0.5rem 1rem; 
+    font-size: 0.875rem; 
+}
+
+.btn-custom-blue:hover {
+    background-color: #0056b3 !important;
+}
+
+.btn-custom-blue:active {
+    background-color: #004494 !important;
+}
+
+.navbar {
+    padding: 0.5rem 1rem; 
+}
+
+.navbar-brand {
+    font-size: 24px; 
+    font-weight: bold !important;
+}
+
+.navbar-toggler {
+    border: none;
+    padding: 0.5rem;
+    width: 40px;
+    height: 40px;
+}
+
+.navbar-toggler-icon {
+    background-image: url('data:image/svg+xml;charset=utf8,%3Csvg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath stroke="rgba%288, 8, 8, 0.5%29" stroke-width="2" linecap="round" linejoin="round" d="M4 7h22M4 15h22M4 23h22"/%3E%3C/svg%3E');
+}
+
+.navbar-nav .nav-link {
+    font-size: 16px; 
+    margin: 0 10px; 
+    position: relative;
+}
+
+.navbar-nav .nav-link::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: transparent;
+    top: -2px;
+    left: 0;
+    transition: background-color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover::before {
+    background-color: #9758A3;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #5159A7 !important;
+}
+
+.navbar-nav .nav-link-custom {
+    color: #000000 !important; /* Texte en noir */
+    text-decoration: none !important; /* Pas de soulignement */
+}
+
+.navbar-nav .nav-link-custom:hover {
+    color: #5159A7!important; /* Texte blanc au survol */
+}
+
+.navbar-nav .nav-link-custom::before {
+    background-color: transparent; /* Barre sous le lien transparente par défaut */
+}
+
+.navbar-nav .nav-link-custom:hover::before {
+    background-color: #9758A3; /* Barre sous le lien violette au survol */
+}
+
+.navbar-nav .nav-link-custom.active-link {
+    color: #5159A7 !important; /* Texte blanc pour le lien actif */
+    text-decoration: none !important; /* Pas de soulignement pour le lien actif */
+}
+
+.navbar-nav .nav-link-custom.active-link::before {
+    background-color: #9758A3; /* Barre sous le lien violette pour le lien actif */
+}
+
+.btn-custom-connexion {
+    background-color: #007bff !important;
+    color: #FAEE46 !important; 
+    font-weight: bold !important;
+    padding: 0.5rem 1rem; 
+    font-size: 0.875rem; 
+}
+
+.btn-custom-connexion:hover {
+    background-color: #0056b3 !important;
+}
+
+.btn-custom-connexion:active {
+    background-color: #004494 !important;
+}
+
+.btn-custom-connexion .me-2 {
+    margin-right: 0.5rem; 
+}
+
+body {
+    padding-top: 56px; /* Adjust this value based on your navbar height */
+}
+
+
+
+.nav-link-custom[style*="pointer-events: none"] {
+    cursor: not-allowed;
+  }
+  
+  
+  
+  
+
+  

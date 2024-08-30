@@ -1,0 +1,17 @@
+
+
+
+  .custom-search-bar {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 8px 12px;
+    width: 100%;
+    max-width: 400px; /* Ajustez la largeur maximale selon vos besoins */
+    transition: border-color 0.3s ease-in-out;
+  }
+  
+  .custom-search-bar:focus {
+    border-color: #007bff; /* Change la couleur de la bordure lorsqu'elle est focus */
+  }
+  
+  

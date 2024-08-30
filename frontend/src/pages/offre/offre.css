@@ -1,0 +1,172 @@
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.offre {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Centre verticalement tous les éléments */
+  flex-grow: 1;
+  padding: 150px 20px; /* Ajustement du padding */
+}
+
+.search-container {
+  text-align: center;
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 40px; /* Ajouter un espacement sous la barre de recherche */
+}
+
+.search-container h1 {
+  color: #5159a7;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.search-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.search-bar input {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  width: 100%;
+  margin: 0 5px;
+}
+
+.search-button {
+  background-color: #007BFF;
+  border: none;
+  width: 2cm;
+  height: 42px; /* Assurez-vous que la hauteur est égale à la largeur pour un bouton carré */
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  display: flex; /* Utilisation de flexbox pour centrer le contenu */
+  align-items: center; /* Centre verticalement */
+  justify-content: center; /* Centre horizontalement */
+}
+
+
+.search-button svg {
+  width: 25px;
+  height: 25px;
+}
+
+.search-button:hover {
+  background-color: #0056b3;
+}
+
+.result-count {
+  text-align: center;
+  margin-top: 20px;
+  font-weight: bold;
+  color: rgb(81, 89, 167);
+}
+
+.job-results {
+  display: flex;
+  flex-wrap: wrap; /* Permet à l'affichage d'enrouler les cartes si elles ne tiennent pas dans une ligne */
+  gap: 20px; /* Espacement entre les cartes */
+  justify-content: center; /* Centre les cartes horizontalement */
+  margin-top: 20px;
+  width: 100%;
+}
+
+.small-card {
+  width: 200px; /* Largeur fixe pour les cartes */
+  height: 200px; /* Hauteur fixe pour les cartes */
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ddd; /* Bordure légère */
+  border-radius: 5px; /* Coins arrondis */
+  overflow: hidden; /* Assure que le contenu ne dépasse pas la carte */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Ombre légère */
+}
+
+.card-body {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px; /* Padding réduit */
+  text-align: center; /* Centre le texte */
+}
+
+.card-title {
+  font-size: 0.9rem; /* Taille réduite pour le titre */
+  overflow: hidden;
+  white-space: nowrap; /* Empêche le retour à la ligne */
+  text-overflow: ellipsis; /* Points de suspension si le texte dépasse */
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px; /* Padding réduit */
+}
+
+.voirbouton, .postulerbouton {
+  font-size: 0.75rem; /* Taille réduite pour les boutons */
+  padding: 5px 10px; /* Padding réduit */
+}
+
+.voirbouton {
+  background-color: #007bff; /* Couleur de fond pour "Voir" */
+}
+
+.postulerbouton {
+  background-color: #28a745; /* Couleur de fond pour "Postuler" */
+}
+
+.voirbouton:hover {
+  background-color: #0056b3; /* Couleur de fond au survol pour "Voir" */
+}
+
+.postulerbouton:hover {
+  background-color: #218838; /* Couleur de fond au survol pour "Postuler" */
+}
+
+
+
+
+.modal-title {
+  text-align: center;
+}
+
+.description-section strong,
+.mission-section strong,
+.competence-section strong,
+.atouts-section strong {
+  display: block;
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 1.2em; /* Taille de la police pour les titres */
+}
+
+
+
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .job-results {
+    width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .voirbouton, .postulerbouton {
+    padding: 6px 12px;
+    font-size: 0.875rem;
+  }
+}
