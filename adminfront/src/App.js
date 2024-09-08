@@ -12,6 +12,7 @@ import CreateOffre from './Offres/CreateOffre';
 import SectionOffre from './Offres/SectionOffre';
 import EditOffre from './Offres/EditOffre';
 import EditCandidat from './Candidature/EditCandidat';
+import Candidat from './Candidature/Candidat';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/listeCandidat" element={<PrivateRoute><ListeCandidat /></PrivateRoute>} />
+          <Route path="/candidat" element={<PrivateRoute><Candidat /></PrivateRoute>} />
           <Route path="/edit-candidat/:id" element={<PrivateRoute><EditCandidat /></PrivateRoute>} />
           <Route path="/offres" element={<PrivateRoute><Offres /></PrivateRoute>} />
           <Route path="/editRecrutement/:id" element={<PrivateRoute><EditRecrutement /></PrivateRoute>} />

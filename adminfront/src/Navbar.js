@@ -27,8 +27,11 @@ const Navbar = () => {
                 <NavDropdown.Item as={Link} to="/create-offre">Créer une Offre</NavDropdown.Item>
                 <NavDropdown.Item as={Link} to="/section-offre">Section des Offres</NavDropdown.Item>
               </NavDropdown>
+              <NavDropdown title="Candidature" id="candidature-dropdown">
+                <NavDropdown.Item as={Link} to="/listeCandidat">Candidature</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/candidat">Noms des candidats</NavDropdown.Item>
+              </NavDropdown>
               <Nav.Link as={Link} to="/offres">Recrutement</Nav.Link>
-              <Nav.Link as={Link} to="/listeCandidat">Candidature</Nav.Link>
             </>
           ) : (
             <>

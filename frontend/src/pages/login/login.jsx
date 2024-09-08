@@ -1,141 +1,217 @@
 
-import React, { useState } from 'react';
-import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
-import { useNavigate, Link } from 'react-router-dom';
-import { useAuth } from '../../context/AuthContext'; // Importez useAuth depuis le contexte d'authentification
-import './login.css';
+
+// import React, { useState, useEffect } from 'react';
+// import { useNavigate, useLocation } from 'react-router-dom';
+// import axios from 'axios';
+// import { useAuth } from '../../context/AuthContext';
+// import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
+
+// const LoginPage = () => {
+//   const { setLoginState } = useAuth();
+//   const [email, setEmail] = useState('');
+//   const [password, setPassword] = useState('');
+//   const [error, setError] = useState('');
+//   const navigate = useNavigate();
+//   const location = useLocation();
+//   const [role, setRole] = useState('');
+
+//   useEffect(() => {
+//     const queryParams = new URLSearchParams(location.search);
+//     const selectedRole = queryParams.get('role');
+//     setRole(selectedRole || 'candidat'); // Set default role to 'candidat'
+//   }, [location.search]);
+
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+//     try {
+//       const response = await axios.post('http://localhost:5000/api/auth/login', {
+//         email,
+//         password,
+//         role,
+//       });
+
+//       if (response.data.token) {
+//         localStorage.setItem('token', response.data.token);
+//         localStorage.setItem('userRole', role);
+//         setLoginState(true, role);
+//         navigate(role === 'candidat' ? '/candidature' : '/recrutement');
+//       } else {
+//         setError('Invalid login credentials');
+//       }
+//     } catch (error) {
+//       console.error('Login failed:', error);
+//       setError('Login failed. Please check your credentials.');
+//     }
+//   };
+
+//   const handleGoogleSuccess = async (response) => {
+//     try {
+//       const res = await axios.post('http://localhost:5000/api/auth/google-login', {
+//         token: response.credential,
+//       });
+
+//       const userRole = res.data.user.role;
+//       localStorage.setItem('token', res.data.token);
+//       localStorage.setItem('userRole', userRole);
+//       setLoginState(true, userRole);
+
+//       // Redirect based on user role
+//       if (userRole === 'candidat') {
+//         navigate('/candidature');
+//       } else if (userRole === 'recruteur') {
+//         navigate('/recrutement');
+//       }
+//     } catch (err) {
+//       console.error('Google login failed:', err);
+//       setError('Google login failed. Please try again.');
+//     }
+//   };
+
+//   const handleGoogleError = () => {
+//     setError('Google login failed. Please try again.');
+//   };
+
+//   return (
+//     <GoogleOAuthProvider clientId="952973180310-f7rmt5ajs27ecg2m9uk4k3o2t9gpdbod.apps.googleusercontent.com">
+//       <div>
+//         <h2>Login as {role.charAt(0).toUpperCase() + role.slice(1)}</h2>
+//         <form onSubmit={handleSubmit}>
+//           <div>
+//             <label>Email:</label>
+//             <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+//           </div>
+//           <div>
+//             <label>Password:</label>
+//             <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+//           </div>
+//           {error && <p style={{ color: 'red' }}>{error}</p>}
+//           <button type="submit">Login</button>
+//         </form>
+//         <p>OR</p>
+//         <GoogleLogin onSuccess={handleGoogleSuccess} onError={handleGoogleError} />
+//       </div>
+//     </GoogleOAuthProvider>
+//   );
+// };
+
+// export default LoginPage;
+
+
+
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 import axios from 'axios';
-import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Importez les icônes d'œil
+import { useAuth } from '../../context/AuthContext';
+import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
+import './login.css'; // Make sure to import the CSS file
 
 const LoginPage = () => {
-  const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-    role: '' // Ajoutez une propriété de rôle à vos données utilisateur
-  });
-
+  const { setLoginState } = useAuth();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const [showPassword, setShowPassword] = useState(false); // État pour gérer la visibilité du mot de passe
   const navigate = useNavigate();
-  const { login } = useAuth(); // Utilisez useAuth pour accéder à la fonction login
+  const location = useLocation();
+  const [role, setRole] = useState('');
 
-  const { email, password, role } = formData;
+  useEffect(() => {
+    const queryParams = new URLSearchParams(location.search);
+    const selectedRole = queryParams.get('role');
+    setRole(selectedRole || 'candidat'); // Set default role to 'candidat'
+  }, [location.search]);
 
-  const onChange = (e) => {
-    setFormData((prevData) => ({
-      ...prevData,
-      [e.target.id]: e.target.value
-    }));
-  };
-
-  const onSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/login', formData);
-      localStorage.setItem('token', res.data.token);
-      localStorage.setItem('userRole', role); // Sauvegardez le rôle sélectionné dans le localStorage
-      login(res.data.user); // Appel de la fonction login avec les données utilisateur après la connexion réussie
-      // Redirection en fonction du rôle de l'utilisateur
-      if (role === 'candidat') {
-        navigate('/candidature'); // Redirigez vers la page "candidature" si l'utilisateur est un candidat
-      } else if (role === 'recruteur') {
-        navigate('/recrutement'); // Redirigez vers la page "recrutement" si l'utilisateur est un recruteur
-      }
-    } catch (err) {
-      setError(getRoleSpecificErrorMessage());
-    }
-  };
-
-  const getRoleSpecificErrorMessage = () => {
-    if (role === 'candidat') {
-      return 'Vous êtes recruteur';
-    } else if (role === 'recruteur') {
-      return 'Vous êtes candidat';
-    } else {
-      return 'Invalid credentials';
-    }
-  };
-
-  const handleSuccess = async (response) => {
-    console.log('Google response:', response);
-
-    try {
-      const res = await axios.post('http://localhost:5000/api/auth/google-login', {
-        token: response.credential
+      const response = await axios.post('http://localhost:5000/api/auth/login', {
+        email,
+        password,
+        role,
       });
 
-      localStorage.setItem('token', res.data.token);
-      localStorage.setItem('userRole', res.data.user.role); // Sauvegardez le rôle de l'utilisateur dans le localStorage
-      login(res.data.user); // Appel de la fonction login avec les données utilisateur après la connexion réussie
-
-      // Redirection en fonction du rôle de l'utilisateur
-      if (res.data.user.role === 'candidat') {
-        navigate('/candidature'); // Redirigez vers la page "candidature" si l'utilisateur est un candidat
-      } else if (res.data.user.role === 'recruteur') {
-        navigate('/recrutement'); // Redirigez vers la page "recrutement" si l'utilisateur est un recruteur
+      if (response.data.token) {
+        localStorage.setItem('token', response.data.token);
+        localStorage.setItem('userRole', role);
+        setLoginState(true, role);
+        navigate(role === 'candidat' ? '/candidature' : '/recrutement');
+      } else {
+        setError('Invalid login credentials');
       }
-    } catch (err) {
-      setError('Erreur de connexion Google. Veuillez réessayer.');
+    } catch (error) {
+      console.error('Login failed:', error);
+      setError('Login failed. Please check your credentials.');
     }
   };
 
-  const handleError = (error) => {
-    console.error('Google login failed:', error);
-    setError('Erreur de connexion Google. Veuillez réessayer.');
+  const handleGoogleSuccess = async (response) => {
+    try {
+      const res = await axios.post('http://localhost:5000/api/auth/google-login', {
+        token: response.credential,
+      });
+
+      const userRole = res.data.user.role;
+      localStorage.setItem('token', res.data.token);
+      localStorage.setItem('userRole', userRole);
+      setLoginState(true, userRole);
+
+      // Redirect based on user role
+      if (userRole === 'candidat') {
+        navigate('/candidature');
+      } else if (userRole === 'recruteur') {
+        navigate('/recrutement');
+      }
+    } catch (err) {
+      console.error('Google login failed:', err);
+      setError('Google login failed. Please try again.');
+    }
   };
 
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword); // Inversez la valeur de showPassword
+  const handleGoogleError = () => {
+    setError('Google login failed. Please try again.');
   };
 
   return (
-    <div className="login">
-      <div className="connexion">
-        <img src="/images/logo.jpg" alt="Logo" className="logo" />
-        <h3>Connexion</h3>
-        <form onSubmit={onSubmit}>
-          <label htmlFor="email">Email</label>
-          <input type="email" id="email" value={email} onChange={onChange} required />
-          <label htmlFor="password">Mot de passe</label>
-          <div className="password">
+    <GoogleOAuthProvider clientId="952973180310-f7rmt5ajs27ecg2m9uk4k3o2t9gpdbod.apps.googleusercontent.com">
+      <div className="login-container">
+      <img src="/images/logo.jpg" alt="Logo" className="login-logo" />
+        <h2 className="login-title">Se connecter en tant que {role.charAt(0).toUpperCase() + role.slice(1)}</h2>
+        <form className="login-form" onSubmit={handleSubmit}>
+          <div className="login-form-group">
+            <label className="login-label">Email:</label>
             <input
-              type={showPassword ? 'text' : 'password'}
-              id="password"
-              value={password}
-              onChange={onChange}
+              className="login-input"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               required
             />
-            <span onClick={togglePasswordVisibility} className="password-toggle-icon">
-              {showPassword ? <FaEyeSlash /> : <FaEye />}
-            </span>
           </div>
-          <div className='ro'>
-            <label htmlFor="role" className='role'>Rôle</label>
-            <select id="role" value={role} onChange={onChange} required className='roleSelect'>
-              <option value="">Sélectionnez un rôle</option>
-              <option value="candidat">Candidat</option>
-              <option value="recruteur">Recruteur</option>
-            </select>
-          </div>
-          {error && <p style={{ color: 'red' }}>{error}</p>}
-          <button type="submit">Se Connecter</button>
-        </form>
-        <p>OU</p>
-        <GoogleOAuthProvider clientId="952973180310-f7rmt5ajs27ecg2m9uk4k3o2t9gpdbod.apps.googleusercontent.com">
-          <div className="login-card">
-            <h5> Connectez-vous avec</h5>
-            <GoogleLogin
-              onSuccess={handleSuccess}
-              onError={handleError}
+          <div className="login-password-wrapper">
+            <label className="login-label">Mot de passe:</label>
+            <input
+              className="login-input"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
             />
           </div>
-        </GoogleOAuthProvider>
-        <div>
-          <p>Vous n'avez pas de compte? <Link to="/inscription">Inscrivez-vous</Link></p>
-        </div>
+          {error && <p className="login-error">{error}</p>}
+          <button className="login-button" type="submit">Se connecter</button>
+        </form>
+        <p className="login-or">ou</p>
+        <GoogleLogin
+          className="login-google-button"
+          onSuccess={handleGoogleSuccess}
+          onError={handleGoogleError}
+        />
+        <br />
+         <div>
+        <h6>Vous n'avez pas de compte? <Link to="/inscription">S'inscrire</Link></h6>
       </div>
-    </div>
+      </div>
+     
+    </GoogleOAuthProvider>
   );
 };
 

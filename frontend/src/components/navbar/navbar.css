@@ -1,39 +1,107 @@
-/* navbar.css */
-.bg-custom-purple-dark {
-    background-color: #fff9a3b3 !important;
-}
-
-.text-custom-yellow {
-    color: #FAEE46 !important;
-}
-
-.font-weight-bold {
-    font-weight: bold !important;
-}
-
-.btn-custom-blue {
-    background-color: #007bff !important;
-    color: #ffffff !important;
-    font-weight: bold !important;
-    padding: 0.5rem 1rem; 
-    font-size: 0.875rem; 
-}
-
-.btn-custom-blue:hover {
-    background-color: #0056b3 !important;
-}
-
-.btn-custom-blue:active {
-    background-color: #004494 !important;
-}
-
+/* Styles pour la barre de navigation */
 .navbar {
-    padding: 0.5rem 1rem; 
+    background-color: #fff9a3b3; /* Jaune clair */
+    padding: 1rem; /* Espacement interne */
 }
 
+/* Logo de la barre de navigation */
 .navbar-brand {
-    font-size: 24px; 
-    font-weight: bold !important;
+    display: flex;
+    align-items: center;
+}
+
+/* Style pour l'image du logo */
+.navbar-brand img {
+    width: 100px;
+    height: auto;
+}
+
+/* Menu de navigation */
+.navbar-nav {
+    display: flex;
+    align-items: center;
+    margin-left: auto; /* Aligne les éléments à droite */
+}
+
+/* Éléments de navigation */
+.nav-item {
+    margin: 0 0.5rem; /* Espacement entre les éléments */
+}
+
+/* Liens de navigation */
+.nav-link {
+    color: #6a1b9a; /* Violet */
+    font-size: 16px; /* Taille du texte des liens */
+    padding: 0.5rem 1rem; /* Espacement interne des liens */
+    border-radius: 4px; /* Coins arrondis */
+    text-decoration: none; /* Supprime la sous-ligne des liens */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transition douce */
+}
+
+/* Effet de survol des liens de navigation */
+.nav-link:hover {
+    color: #4caf50; /* Couleur du texte au survol */
+}
+
+/* Styles pour le bouton de déconnexion */
+.btn-outline-danger {
+    border-color: #2196f3; /* Bordure bleue */
+    color: #2196f3; /* Couleur du texte bleue */
+    font-weight: bold; /* Texte en gras */
+    padding: 0.5rem 1rem; /* Espacement interne des boutons */
+    border-radius: 4px; /* Coins arrondis */
+    text-decoration: none; /* Supprime la sous-ligne du bouton */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transition douce */
+}
+
+/* Effet de survol du bouton de déconnexion */
+.btn-outline-danger:hover {
+    background-color: #2196f3; /* Fond bleu au survol */
+    color: #ffffff; /* Couleur du texte au survol */
+}
+
+/* Styles pour le menu déroulant */
+.dropdown-menu {
+    background-color: #fff9a3b3; /* Jaune clair */
+    border: none; /* Pas de bordure */
+    border-radius: 4px; /* Coins arrondis */
+    padding: 0; /* Pas de padding interne */
+}
+
+/* Éléments du menu déroulant */
+.dropdown-item {
+    color: #6a1b9a; /* Violet */
+    padding: 0.5rem 1rem; /* Espacement interne des éléments du menu */
+    text-decoration: none; /* Supprime la sous-ligne des éléments du menu */
+    transition: background-color 0.3s ease; /* Transition douce */
+}
+
+/* Effet de survol des éléments du menu déroulant */
+.dropdown-item:hover {
+    color: #000000; /* Couleur du texte au survol */
+}
+
+/* Styles pour le bouton "Se Connecter" */
+.nav-link.dropdown-toggle {
+    background-color: #5159a7; /* Bleu */
+    color: #ffffff; /* Couleur du texte blanche */
+    padding: 0.5rem 1rem; /* Espacement interne */
+    border-radius: 4px; /* Coins arrondis */
+    font-weight: bold; /* Texte en gras */
+    display: flex; /* Aligne l'icône et le texte */
+    align-items: center; /* Alignement vertical de l'icône et du texte */
+}
+
+/* Effet de survol du bouton "Se Connecter" */
+.nav-link.dropdown-toggle:hover {
+    background-color: #5159a7; /* Bleu plus foncé */
+    color: #ffffff; /* Couleur du texte blanche */
+}
+
+/* Icône du bouton "Se Connecter" */
+.nav-link.dropdown-toggle .fas {
+    margin-right: 0.5rem; /* Espacement entre l'icône et le texte */
+    font-size: 1rem; /* Taille de l'icône */
 }
 
 .navbar-toggler {
@@ -47,89 +115,15 @@
     background-image: url('data:image/svg+xml;charset=utf8,%3Csvg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath stroke="rgba%288, 8, 8, 0.5%29" stroke-width="2" linecap="round" linejoin="round" d="M4 7h22M4 15h22M4 23h22"/%3E%3C/svg%3E');
 }
 
-.navbar-nav .nav-link {
-    font-size: 16px; 
-    margin: 0 10px; 
-    position: relative;
+/* Styles pour les écrans petits */
+@media (max-width: 991px) {
+
+    .navbar-brand {
+      margin-right: auto; /* Aligne le logo à gauche */
+    }
+
+    .navbar-nav {
+      text-align: center; /* Centre le texte */
+      margin: auto; /* Centre les éléments de navigation */
+    }
 }
-
-.navbar-nav .nav-link::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    background-color: transparent;
-    top: -2px;
-    left: 0;
-    transition: background-color 0.3s ease;
-}
-
-.navbar-nav .nav-link:hover::before {
-    background-color: #9758A3;
-}
-
-.navbar-nav .nav-link:hover {
-    color: #5159A7 !important;
-}
-
-.navbar-nav .nav-link-custom {
-    color: #000000 !important; /* Texte en noir */
-    text-decoration: none !important; /* Pas de soulignement */
-}
-
-.navbar-nav .nav-link-custom:hover {
-    color: #5159A7!important; /* Texte blanc au survol */
-}
-
-.navbar-nav .nav-link-custom::before {
-    background-color: transparent; /* Barre sous le lien transparente par défaut */
-}
-
-.navbar-nav .nav-link-custom:hover::before {
-    background-color: #9758A3; /* Barre sous le lien violette au survol */
-}
-
-.navbar-nav .nav-link-custom.active-link {
-    color: #5159A7 !important; /* Texte blanc pour le lien actif */
-    text-decoration: none !important; /* Pas de soulignement pour le lien actif */
-}
-
-.navbar-nav .nav-link-custom.active-link::before {
-    background-color: #9758A3; /* Barre sous le lien violette pour le lien actif */
-}
-
-.btn-custom-connexion {
-    background-color: #007bff !important;
-    color: #FAEE46 !important; 
-    font-weight: bold !important;
-    padding: 0.5rem 1rem; 
-    font-size: 0.875rem; 
-}
-
-.btn-custom-connexion:hover {
-    background-color: #0056b3 !important;
-}
-
-.btn-custom-connexion:active {
-    background-color: #004494 !important;
-}
-
-.btn-custom-connexion .me-2 {
-    margin-right: 0.5rem; 
-}
-
-body {
-    padding-top: 56px; /* Adjust this value based on your navbar height */
-}
-
-
-
-.nav-link-custom[style*="pointer-events: none"] {
-    cursor: not-allowed;
-  }
-  
-  
-  
-  
-
-  

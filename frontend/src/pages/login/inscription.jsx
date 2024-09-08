@@ -1,4 +1,6 @@
 
+
+
 // import React, { useState } from 'react';
 // import { useNavigate } from 'react-router-dom';
 // import axios from 'axios';
@@ -32,6 +34,14 @@
 //       return;
 //     }
 
+//     // Exigences simplifiées du mot de passe
+//     const passwordRequirements = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+
+//     if (!passwordRequirements.test(password)) {
+//       setError('Le mot de passe doit contenir au moins 8 caractères, avec au moins une lettre et un chiffre.');
+//       return;
+//     }
+
 //     try {
 //       const res = await axios.post('http://localhost:5000/api/auth/register', {
 //         nom,
@@ -47,13 +57,16 @@
 //       setConfirmPassword('');
 //       setRole('');
 
-//       localStorage.setItem('token', res.data.token);
-//       localStorage.setItem('userRole', role);
+//       // Si le rôle est recruteur, rediriger vers la page de login avec le rôle spécifié
+//       if (role === 'recruteur') {
+//         navigate(`/connexion?role=recruteur`);
+//       } else {
+//         localStorage.setItem('token', res.data.token);
+//         localStorage.setItem('userRole', role);
 
-//       if (role === 'candidat') {
-//         navigate('/candidature');
-//       } else if (role === 'recruteur') {
-//         navigate('/recrutement');
+//         if (role === 'candidat') {
+//           navigate('/candidature');
+//         }
 //       }
 
 //     } catch (err) {
@@ -124,7 +137,7 @@
 //         </div>
 
 //         <div className='ro'>
-//         <label htmlFor="role" className='role'>Rôle</label>
+//           <label htmlFor="role" className='role'>Rôle</label>
 //           <select id="role" value={role}  onChange={(e) => setRole(e.target.value)} className='roleSelect'>
 //             <option value="">Sélectionnez un rôle</option>
 //             <option value="candidat">Candidat</option>
@@ -141,6 +154,8 @@
 // }
 
 // export default Inscription;
+
+
 
 
 import React, { useState } from 'react';
@@ -176,7 +191,6 @@ function Inscription() {
       return;
     }
 
-    // Exigences simplifiées du mot de passe
     const passwordRequirements = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 
     if (!passwordRequirements.test(password)) {
@@ -199,13 +213,15 @@ function Inscription() {
       setConfirmPassword('');
       setRole('');
 
-      localStorage.setItem('token', res.data.token);
-      localStorage.setItem('userRole', role);
+      if (role === 'recruteur') {
+        navigate(`/connexion?role=recruteur`);
+      } else {
+        localStorage.setItem('token', res.data.token);
+        localStorage.setItem('userRole', role);
 
-      if (role === 'candidat') {
-        navigate('/candidature');
-      } else if (role === 'recruteur') {
-        navigate('/recrutement');
+        if (role === 'candidat') {
+          navigate('/candidature');
+        }
       }
 
     } catch (err) {
@@ -230,66 +246,74 @@ function Inscription() {
   };
 
   return (
-    <div className="inscription">
-      {error && <p className="error-message">{error}</p>}
-      {success && <p className="success-message">{success}</p>}
-      <img src="/images/logo.jpg" alt="Logo" className="logo" />
-      <h3>Créez votre compte</h3>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="nom">Nom</label>
+    <div className="register-container">
+      {error && <p className="register-error">{error}</p>}
+      {success && <p className="register-success">{success}</p>}
+      <img src="/images/logo.jpg" alt="Logo" className="register-logo" />
+      <h3 className="register-title">Créez votre compte</h3>
+      <form onSubmit={handleSubmit} className="register-form">
+        <label htmlFor="nom" className="register-label">Nom</label>
         <input 
           type="text" 
           id="nom" 
           value={nom} 
           onChange={(e) => setNom(e.target.value)} 
+          className="register-input"
         />
-        <label htmlFor="email">Email</label>
+        <label htmlFor="email" className="register-label">Email</label>
         <input 
           type="email" 
           id="email" 
           value={email} 
           onChange={(e) => setEmail(e.target.value)} 
+          className="register-input"
         />
-        <label htmlFor="password">Mot de passe</label>
-        <div className="password">
+        <label htmlFor="password" className="register-label">Mot de passe</label>
+        <div className="register-password-wrapper">
           <input
             type={showPassword ? 'text' : 'password'}
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            className="register-input"
           />
-          <span onClick={togglePasswordVisibility} className="password-toggle-icon">
+          <span onClick={togglePasswordVisibility} className="register-eye-icon">
             {showPassword ? <FaEyeSlash /> : <FaEye />}
           </span>
         </div>
-        <label htmlFor="confirmPassword">Confirmer mot de passe</label>
-        <div className="password">
+        <label htmlFor="confirmPassword" className="register-label">Confirmer mot de passe</label>
+        <div className="register-password-wrapper">
           <input
             type={showConfirmPassword ? 'text' : 'password'}
             id="confirmPassword"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
+            className="register-input"
           />
-          <span onClick={toggleConfirmPasswordVisibility} className="password-toggle-icon">
+          <span onClick={toggleConfirmPasswordVisibility} className="register-eye-icon">
             {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
           </span>
         </div>
 
-        <div className='ro'>
-          <label htmlFor="role" className='role'>Rôle</label>
-          <select id="role" value={role}  onChange={(e) => setRole(e.target.value)} className='roleSelect'>
-            <option value="">Sélectionnez un rôle</option>
+        <div className="register-form-group">
+          <label htmlFor="role" className="register-label">Rôle</label>
+          <select
+            id="role"
+            value={role}
+            onChange={(e) => setRole(e.target.value)}
+            className="register-role-select"
+          >
+            <option value="">Choisir un rôle</option>
             <option value="candidat">Candidat</option>
             <option value="recruteur">Recruteur</option>
           </select>
         </div>
 
-        <div>
-          <button type="submit">S'inscrire</button>
-        </div>
+        <button type="submit" className="register-button">S'inscrire</button>
       </form>
     </div>
   );
 }
 
 export default Inscription;
+

@@ -1,83 +1,142 @@
-/* inscription.css */
 
-.inscription {
-  max-width: 400px; /* Largeur maximale du conteneur */
-  margin: auto; /* Centrer horizontalement */
-  padding: 20px; /* Espacement intérieur */
-  background: #fff; /* Couleur de fond blanche */
-  border-radius: 10px; /* Bords arrondis */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
-  margin-top: 100px; /* Augmentez la marge supérieure pour déplacer vers le bas */
-}
 
-.logo {
+.register-logo {
   width: 100px; /* Largeur de l'image */
   height: 100px; /* Hauteur de l'image */
+  padding: 2px;
   border-radius: 50%; /* Image ronde */
-  margin: 0 auto 20px; /* Centrer horizontalement et espacement en bas */
+  margin: -20px auto 10px; /* Réduction de l'espace en haut */
   display: block; /* Affichage en bloc */
 }
 
-h2 {
-  margin-bottom: 20px; /* Espacement en bas */
-  text-align: center; /* Centrer le texte */
-}
 
-form {
-  display: flex;
-  flex-direction: column; /* Organiser les éléments en colonne */
-}
 
-label {
-  margin-bottom: 5px; /* Espacement en bas */
-  text-align: left; /* Aligner le texte à gauche */
-}
-
-input {
-  margin-bottom: 10px; /* Espacement en bas */
-  padding: 10px; /* Espacement intérieur */
-  width: 100%; /* Largeur totale */
-  box-sizing: border-box; /* Inclure le padding et les bordures dans la largeur */
-  border: 1px solid #ccc; /* Bordure grise */
-  border-radius: 5px; /* Bords arrondis */
-}
-
-button {
-  padding: 10px 20px; /* Espacement intérieur */
-  background-color: #007bff; /* Couleur de fond bleue */
-  color: white; /* Couleur du texte blanche */
-  border: none; /* Pas de bordure */
-  border-radius: 5px; /* Bords arrondis */
-  cursor: pointer; /* Curseur de pointeur */
-  width: 100%; /* Largeur totale */
-}
-
-button:hover {
-  background-color: #0056b3; /* Couleur de fond bleue foncée au survol */
-}
-
-.error-message {
-  color: red; /* Couleur du texte rouge */
-  margin-bottom: 10px; /* Espacement en bas */
-  text-align: center; /* Centrer le texte */
-}
-
-.success-message {
-  color: green; /* Couleur du texte verte */
-  margin-bottom: 10px; /* Espacement en bas */
-  text-align: center; /* Centrer le texte */
-}
-
-.password {
-  position: relative;
+/* Conteneur pour le formulaire d'inscription */
+.register-container {
   width: 100%;
+  max-width: 400px; /* Augmentation de la largeur maximale pour plus de visibilité */
+  margin: 100px auto; /* Centré et ajout d'une marge supérieure */
+  padding: 50px; /* Augmentation du padding pour plus d'espace */
+  border-radius: 8px; /* Coins arrondis légèrement plus */
+  background-color: white; /* Fond blanc */
+  
+  /* Ombre plus marquée */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.1); 
 }
 
-.password-toggle-icon {
+/* Titre du formulaire d'inscription */
+.register-title {
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+/* Style du formulaire d'inscription */
+.register-form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Conteneur pour les champs de saisie */
+.register-form-group {
+  position: relative;
+}
+
+/* Style des étiquettes */
+.register-label {
+  margin-bottom: 5px;
+  font-size: 13px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Style des champs de saisie */
+.register-input {
+  width: 100%;
+  padding: 8px 36px; /* Réduction du padding pour un champ plus fin */
+  font-size: 14px; /* Ajustement de la taille de police pour un aspect plus fin */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  height: 36px; /* Hauteur spécifique pour le champ de saisie */
+}
+
+/* Conteneur pour le champ de mot de passe et l'icône d'œil */
+.register-password-wrapper {
+  position: relative;
+}
+
+/* Style de l'icône d'œil pour le mot de passe */
+.register-eye-icon {
   position: absolute;
   top: 50%;
-  right: 10px;
+  right: 10px; /* Ajuster la position si nécessaire */
   transform: translateY(-50%);
   cursor: pointer;
+  color: #333; /* Ajuster la couleur de l'icône si nécessaire */
+}
+
+/* Style des messages d'erreur */
+.register-error {
+  color: red;
+  font-size: 13px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* Style des messages de succès */
+.register-success {
+  color: green;
+  font-size: 13px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* Style du bouton d'inscription */
+.register-button {
+  width: 100%;
+  padding: 8px; /* Réduction du padding pour un bouton plus fin */
+  font-size: 14px; /* Ajustement de la taille de police pour un bouton plus fin */
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  height: 36px; /* Hauteur spécifique pour le bouton */
+}
+
+.register-button:hover {
+  background-color: #0056b3;
+}
+
+/* Style du séparateur "OU" */
+.register-or {
+  text-align: center;
+  margin: 15px 0;
+  font-size: 13px;
+  font-weight: bold;
   color: #333;
+}
+
+/* Style du sélecteur de rôle */
+.register-role-select {
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  height: 36px;
+  margin-bottom: 15px;
+}
+
+/* Style du bouton Google pour l'inscription */
+.register-google-button {
+  width: 100%;
+  padding: 8px; /* Réduction du padding pour un bouton plus fin */
+  font-size: 14px; /* Ajustement de la taille de police pour un bouton plus fin */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  height: 36px; /* Hauteur spécifique pour le bouton */
 }

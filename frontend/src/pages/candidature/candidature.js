@@ -59,11 +59,13 @@ const FileUpload = () => {
   };
   const validateSecondForm = () => {
     const errors = {};
-    if (!formData.currentPosition) errors.currentPosition = "Poste actuel est requis";
-    if (!formData.experience) errors.experience = "Réalisation st requise";
+    if (!formData.currentPosition)
+      errors.currentPosition = "Poste actuel est requis";
+    if (!formData.experience) errors.experience = "Réalisation est requise";
     if (!formData.position) errors.position = "Poste envisagé est requis";
     if (!formData.jobTitle) errors.jobTitle = "Poste est requise";
-    if (!formData.jobDescription) errors.jobDescription = "Description du poste est requise";
+    if (!formData.jobDescription)
+      errors.jobDescription = "Description du poste est requise";
     setErrors(errors);
     return Object.keys(errors).length === 0;
   };
@@ -79,14 +81,16 @@ const FileUpload = () => {
 
   const handleNext = () => {
     if (validateFirstForm()) {
-      alert("Merci de remplir vos informations, pour continuer, veuillez remplir le formulaire suivant");
+      alert(
+        "Nous avons bien enregistré toutes vos informations. Bienvenue chez HOAG A2I et bonne navigation !"
+      );
       setShowSecondForm(true);
     }
   };
 
   const handleNextToThirdForm = () => {
     if (validateSecondForm()) {
-      alert("Pour terminer, renseignez vos compétences");
+      alert("Nous permettez de vous aider à trouver votre travail de rêve.");
       setShowThirdForm(true);
     }
   };
@@ -108,8 +112,7 @@ const FileUpload = () => {
           },
         }
       );
-      setMessage("File uploaded successfully");
-      alert('Votre candidature a bien été enregistrée');
+      alert("Votre candidature est bien retenue. Nous vous appellerons le plus vite possible pour la suite.");
     } catch (error) {
       setMessage("Veuillez remplir tous les champs");
     }
@@ -156,27 +159,36 @@ const FileUpload = () => {
 
           <form onSubmit={handleSubmit}>
             <div>
-              <label>Nom:</label>
+              <label>
+                Nom: <span style={{ color: "red" }}>*</span>
+              </label>
               <input
                 type="text"
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
+                placeholder="Votre nom"
               />
-                {errors.name && <p className="error">{errors.name}</p>}
+              {errors.name && <p className="error">{errors.name}</p>}
             </div>
+
             <div>
-              <label>Prénoms:</label>
+              <label>
+                Prénoms:<span style={{ color: "red" }}>*</span>
+              </label>
               <input
                 type="text"
                 name="prenom"
                 value={formData.prenom}
                 onChange={handleChange}
+                placeholder="Votre prénom(s)"
               />
               {errors.prenom && <p className="error">{errors.prenom}</p>}
             </div>
             <div>
-              <label>Date de naissance:</label>
+              <label>
+                Date de naissance:<span style={{ color: "red" }}>*</span>
+              </label>
               <input
                 type="date"
                 name="birthdate"
@@ -186,32 +198,34 @@ const FileUpload = () => {
               {errors.birthdate && <p className="error">{errors.birthdate}</p>}
             </div>
             <div>
-              <label>Email:</label>
+              <label>
+                Email:<span style={{ color: "red" }}>*</span>
+              </label>
               <input
                 type="email"
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
+                placeholder="Adresse email"
               />
               {errors.email && <p className="error">{errors.email}</p>}
             </div>
             <div>
-              <label>Téléphone:</label>
+              <label>
+                Téléphone:<span style={{ color: "red" }}>*</span>
+              </label>
               <input
                 type="text"
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
+                placeholder="033 ** *** ** | 034 ** *** ** "
               />
               {errors.phone && <p className="error">{errors.phone}</p>}
             </div>
 
-            <button
-              type="button"
-              onClick={handleNext}
-              className="next-button"
-            >
-            Soumettre
+            <button type="button" onClick={handleNext} className="next-button">
+              Soumettre
             </button>
           </form>
         </div>
@@ -219,35 +233,49 @@ const FileUpload = () => {
         <div className="form-container">
           <form onSubmit={handleSubmit}>
             <div>
-              <label>Poste actuel:</label>
+              <label>
+                Poste actuel:<span style={{ color: "red" }}>*</span>
+              </label>
               <input
                 type="text"
                 name="currentPosition"
                 value={formData.currentPosition}
                 onChange={handleChange}
+                placeholder="Votre poste actuel"
               />
-               {errors.currentPosition && <p className="error">{errors.currentPosition}</p>}
+              {errors.currentPosition && (
+                <p className="error">{errors.currentPosition}</p>
+              )}
             </div>
             <div>
-              <label>Résumez vos réalisations en travail:</label>
+              <label>
+                Résumez vos réalisations en travail:
+                <span style={{ color: "red" }}>*</span>
+              </label>
               <textarea
                 type="text"
                 name="experience"
                 value={formData.experience}
                 onChange={handleChange}
+                placeholder="cotre réalisation sur ce travail"
               />
-               {errors.experience && <p className="error">{errors.experience}</p>}
+              {errors.experience && (
+                <p className="error">{errors.experience}</p>
+              )}
             </div>
             <div>
               <div>
-                <label>Poste envisagé:</label>
+                <label>
+                  Poste envisagé:<span style={{ color: "red" }}>*</span>
+                </label>
                 <input
                   type="text"
                   name="position"
                   value={formData.position}
                   onChange={handleChange}
+                  placeholder="Poste envisagé"
                 />
-                 {errors.position && <p className="error">{errors.position}</p>}
+                {errors.position && <p className="error">{errors.position}</p>}
               </div>
               <div className="radio-group">
                 <label>
@@ -260,7 +288,9 @@ const FileUpload = () => {
                     checked={formData.jobTitle === "Stage"}
                     onChange={handleJobTitleChange}
                   />
-                   {errors.jobTitle && <p className="error">{errors.jobTitle}</p>}
+                  {errors.jobTitle && (
+                    <p className="error">{errors.jobTitle}</p>
+                  )}
                 </label>
                 <label>
                   Travail
@@ -272,7 +302,9 @@ const FileUpload = () => {
                     checked={formData.jobTitle === "Travail"}
                     onChange={handleJobTitleChange}
                   />
-                   {errors.jobTitle && <p className="error">{errors.jobTitle}</p>}
+                  {errors.jobTitle && (
+                    <p className="error">{errors.jobTitle}</p>
+                  )}
                 </label>
               </div>
 
@@ -340,15 +372,34 @@ const FileUpload = () => {
                 </div>
               )}
             </div>
-            <div>
-              <label>Decrivez vos attentes pour ce poste:</label>
+            {/* <div>
+              <label>Decrivez vos attentes pour ce poste:<span style={{ color: 'red' }}>*</span></label>
               <textarea
                 type="text"
                 name="jobDescription"
                 value={formData.jobDescription}
                 onChange={handleChange}
               />
-               {errors.jobDescription && <p className="error">{errors.jobDescription}</p>}
+              {errors.jobDescription && (
+                <p className="error">{errors.jobDescription}</p>
+              )}
+            </div> */}
+            <div>
+              <label>
+                Décrivez vos attentes pour ce poste:{" "}
+                <span style={{ color: "red" }}>*</span>
+              </label>
+              <p>Veuillez lister vos attentes une par ligne (1, 2, 3...)</p>
+              <textarea
+                name="jobDescription"
+                value={formData.jobDescription}
+                onChange={handleChange}
+                placeholder={`1. \n2. \n3. `}
+                rows={5} // Ajuster la hauteur pour plus de lignes
+              />
+              {errors.jobDescription && (
+                <p className="error">{errors.jobDescription}</p>
+              )}
             </div>
 
             <button
@@ -356,77 +407,101 @@ const FileUpload = () => {
               onClick={handleNextToThirdForm}
               className="next-button"
             >
-               Soumettre
+              Soumettre
             </button>
           </form>
         </div>
       ) : (
         <div className="form-container">
           <form onSubmit={handleSubmit}>
-          <h2>Expériences en travail</h2>
-          <div className="form-group">
-                <label>Poste:</label>
-                <input
-                  type="text"
-                  name="jobTitle"
-                  value={formData.jobTitle}
-                  onChange={handleChange}
-                />
-                 {errors.jobTitle && <p className="error">{errors.jobTitle}</p>}
-              </div>
+            <h2>Expériences en travail</h2>
+            <div className="form-group">
+              <label>Poste:<span style={{ color: "red" }}>*</span></label>
+              <input
+                type="text"
+                name="jobTitle"
+                value={formData.jobTitle}
+                onChange={handleChange}
+                placeholder="votre poste"
+              />
+              {errors.jobTitle && <p className="error">{errors.jobTitle}</p>}
+            </div>
+            <div className="form-group">
+              <label>Entreprise:<span style={{ color: "red" }}>*</span></label>
+              <input
+                type="text"
+                name="company"
+                value={formData.company}
+                onChange={handleChange}
+                placeholder="Nom de votre entreprise"
+              />
+              {errors.company && <p className="error">{errors.company}</p>}
+            </div>
+            <div className="form-group">
+              <label>Adresse physique:<span style={{ color: "red" }}>*</span></label>
+              <input
+                type="text"
+                name="location"
+                value={formData.location}
+                onChange={handleChange}
+                placeholder="Lot IVD 89A Behoririka Antananarivo"
+              />
+              {errors.location && <p className="error">{errors.location}</p>}
+            </div>
+            <div className="form-row">
               <div className="form-group">
-                <label>Entreprise:</label>
-                <input
-                  type="text"
-                  name="company"
-                  value={formData.company}
-                  onChange={handleChange}
-                />
-                 {errors.company && <p className="error">{errors.company}</p>}
-              </div>
-              <div className="form-group">
-                <label>Adresse physique:</label>
-                <input
-                  type="text"
-                  name="location"
-                  value={formData.location}
-                  onChange={handleChange}
-                />
-                 {errors.location && <p className="error">{errors.location}</p>}
-              </div>
-              <div className="form-row">
-              <div className="form-group">
-                <label htmlFor="start-date">Date de début</label>
+                <label htmlFor="start-date">Date de début<span style={{ color: "red" }}>*</span></label>
                 <input
                   type="date"
                   name="startDate"
                   value={formData.startDate}
                   onChange={handleChange}
                 />
-                 {errors.startDate && <p className="error">{errors.startDate}</p>}
+                {errors.startDate && (
+                  <p className="error">{errors.startDate}</p>
+                )}
               </div>
               <div className="form-group">
-                <label htmlFor="end-date">Date de fin</label>
+                <label htmlFor="end-date">Date de fin <span style={{ color: "red" }}>*</span></label>
                 <input
                   type="date"
                   name="endDate"
                   value={formData.endDate}
                   onChange={handleChange}
                 />
-                 {errors.endDate && <p className="error">{errors.endDate}</p>}
+                {errors.endDate && <p className="error">{errors.endDate}</p>}
               </div>
             </div>
-            <div className="form-group">
-              <label htmlFor="achievements">vos réalisations</label>
+            {/* <div className="form-group">
+              <label htmlFor="achievements">Vos réalisations</label>
               <textarea
                 type="text"
                 name="achievements"
                 value={formData.achievements}
                 onChange={handleChange}
               />
-               {errors.achievements && <p className="error">{errors.achievements}</p>}
-            </div>
+              {errors.achievements && (
+                <p className="error">{errors.achievements}</p>
+              )}
+            </div> */}
             <div className="form-group">
+              <label htmlFor="achievements">
+                Vos réalisations <span style={{ color: "red" }}>*</span>
+              </label>
+              <p>Veuillez lister vos réalisations une par ligne (1, 2, 3...)</p>
+              <textarea
+                name="achievements"
+                value={formData.achievements}
+                onChange={handleChange}
+                placeholder={`1. \n2. \n3. `}
+                rows={5} // Ajuster la hauteur pour plus de lignes
+              />
+              {errors.achievements && (
+                <p className="error">{errors.achievements}</p>
+              )}
+            </div>
+
+            {/* <div className="form-group">
               <label htmlFor="skills-used">
                 Enumerez les compétences techniques utilisés
               </label>
@@ -436,93 +511,159 @@ const FileUpload = () => {
                 value={formData.skillsUsed}
                 onChange={handleChange}
               />
-               {errors.skillsUsed && <p className="error">{errors.skillsUsed}</p>}
+              {errors.skillsUsed && (
+                <p className="error">{errors.skillsUsed}</p>
+              )}
+            </div> */}
+            <div className="form-group">
+              <label htmlFor="skills-used">
+                Énumérez les compétences techniques utilisées{" "}
+                <span style={{ color: "red" }}>*</span>
+              </label>
+              <textarea
+                name="skillsUsed"
+                value={formData.skillsUsed}
+                onChange={handleChange}
+                placeholder={`1. \n2. \n3. `}
+                rows={5} // Ajuster la hauteur pour plus de lignes
+              />
+              {errors.skillsUsed && (
+                <p className="error">{errors.skillsUsed}</p>
+              )}
             </div>
+
             <div>
-            <h5>Compétence technique</h5>
+              <h5>Compétence technique</h5>
               <div className="form-group">
-                <label htmlFor="skills-title">Nom de la compétence</label>
+                <label htmlFor="skills-title">Nom de la compétence: <span style={{ color: "red" }}>*</span></label>
                 <input
                   type="text"
                   name="skillsTitle"
                   value={formData.skillsTitle}
                   onChange={handleChange}
+                  placeholder="Votre compétence technique"
                 />
-                 {errors.skillsTitle && <p className="error">{errors.skillsTitle}</p>}
+                {errors.skillsTitle && (
+                  <p className="error">{errors.skillsTitle}</p>
+                )}
               </div>
-              <div className="form-group">
+              {/* <div className="form-group">
                 <label htmlFor="skills-title">Outils techniques</label>
-                <input
+                <textarea
                   type="text"
                   name="outil"
                   value={formData.outil}
                   onChange={handleChange}
+                  placeholder="Outils techniques"
                 />
-                 {errors.outil && <p className="error">{errors.outil}</p>}
+                {errors.outil && <p className="error">{errors.outil}</p>}
+              </div> */}
+              <div className="form-group">
+                <label htmlFor="skills-title">
+                  Outils techniques <span style={{ color: "red" }}>*</span>
+                </label>
+                <textarea
+                  name="outil"
+                  value={formData.outil}
+                  onChange={handleChange}
+                  placeholder={`1. \n2. \n3.`} // Exemple de numérotation dans le placeholder
+                  rows={5} // Ajuster la hauteur pour permettre plusieurs lignes
+                />
+                {errors.outil && <p className="error">{errors.outil}</p>}
               </div>
+
               <div>
-              <label>Description:</label>
-              <textarea
-                type="text"
-                name="skillsDescription"
-                value={formData.skillsDescription}
-                onChange={handleChange}
-              />
-               {errors.skillsDescription && <p className="error">{errors.skillsDescription}</p>}
+                <label>Description:<span style={{ color: "red" }}>*</span></label>
+                <textarea
+                  type="text"
+                  name="skillsDescription"
+                  value={formData.skillsDescription}
+                  onChange={handleChange}
+                />
+                {errors.skillsDescription && (
+                  <p className="error">{errors.skillsDescription}</p>
+                )}
+              </div>
             </div>
-            </div>
-           
-            
+
             <div>
-              <label>Nombre d'années d'expérience:</label>
+              <label>Nombre d'années d'expérience:<span style={{ color: "red" }}>*</span></label>
               <input
                 type="number"
                 name="skillsYears"
                 value={formData.skillsYears}
                 onChange={handleChange}
               />
-               {errors.skillsYears && <p className="error">{errors.skillsYears}</p>}
+              {errors.skillsYears && (
+                <p className="error">{errors.skillsYears}</p>
+              )}
             </div>
-            <div>
+            {/* <div>
               <label>Certificat obtenus:</label>
-              <input
+              <textarea
                 type="text"
                 name="certificat"
                 value={formData.certificat}
                 onChange={handleChange}
               />
-               {errors.certificat && <p className="error">{errors.certificat}</p>}
+              {errors.certificat && (
+                <p className="error">{errors.certificat}</p>
+              )}
+            </div> */}
+            <div>
+              <label>
+                Certificat obtenus: <span style={{ color: "red" }}>*</span>
+              </label>
+              <textarea
+                name="certificat"
+                value={formData.certificat}
+                onChange={handleChange}
+                placeholder={`1. \n2. \n3.`} // Placeholder avec numérotation pour indiquer l'attente
+                rows={5} // Ajuster la hauteur pour plusieurs lignes
+              />
+              {errors.certificat && (
+                <p className="error">{errors.certificat}</p>
+              )}
             </div>
+
             <h5>Compétence Transversale</h5>
             <div className="form-group">
-              <label htmlFor="skills-title">Nom de la compétence</label>
+              <label htmlFor="skills-title">Nom de la compétence<span style={{ color: "red" }}>*</span></label>
               <input
                 type="text"
                 name="skillsTitleTransversal"
                 value={formData.skillsTitleTransversal}
                 onChange={handleChange}
+placeholder="Nom de votre compétence transversale"
               />
-               {errors.skillsTitleTransversal && <p className="error">{errors.skillsTitleTransversal}</p>}
+              {errors.skillsTitleTransversal && (
+                <p className="error">{errors.skillsTitleTransversal}</p>
+              )}
             </div>
             <div>
-              <label>Description:</label>
+              <label>Description:<span style={{ color: "red" }}>*</span></label>
               <textarea
                 type="text"
                 name="skillsDescriptionTransversal"
                 value={formData.skillsDescriptionTransversal}
                 onChange={handleChange}
+                placeholder="Description de la compétence"
               />
-               {errors.skillsDescriptionTransversal && <p className="error">{errors.skillsDescriptionTransversal}</p>}
+              {errors.skillsDescriptionTransversal && (
+                <p className="error">{errors.skillsDescriptionTransversal}</p>
+              )}
             </div>
             <div>
-              <label>Nombre d'années d'expérience:</label>
+              <label>Nombre d'années d'expérience:<span style={{ color: "red" }}>*</span></label>
               <input
                 type="number"
                 name="skillsYearsTransversal"
                 value={formData.skillsYearsTransversal}
                 onChange={handleChange}
               />
-               {errors.skillsYearsTransversal && <p className="error">{errors.skillsYearsTransversal}</p>}
+              {errors.skillsYearsTransversal && (
+                <p className="error">{errors.skillsYearsTransversal}</p>
+              )}
             </div>
 
             <div>
